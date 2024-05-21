@@ -24,6 +24,14 @@ export interface UpdateGroupInput {
     id: number;
 }
 
+export interface CreateHobbyInput {
+    exampleField?: Nullable<number>;
+}
+
+export interface UpdateHobbyInput {
+    id: number;
+}
+
 export interface CreatePostInput {
     exampleField?: Nullable<number>;
 }
@@ -59,6 +67,7 @@ export interface IQuery {
     event(id: number): Nullable<Event> | Promise<Nullable<Event>>;
     groups(): Nullable<Group>[] | Promise<Nullable<Group>[]>;
     group(id: number): Nullable<Group> | Promise<Nullable<Group>>;
+    hobby(id: number): Hobby | Promise<Hobby>;
     posts(): Nullable<Post>[] | Promise<Nullable<Post>[]>;
     post(id: number): Nullable<Post> | Promise<Nullable<Post>>;
     user(): Nullable<User>[] | Promise<Nullable<User>[]>;
@@ -72,6 +81,9 @@ export interface IMutation {
     createGroup(createGroupInput: CreateGroupInput): Group | Promise<Group>;
     updateGroup(updateGroupInput: UpdateGroupInput): Group | Promise<Group>;
     removeGroup(id: number): Nullable<Group> | Promise<Nullable<Group>>;
+    createHobby(createHobbyInput: CreateHobbyInput): Hobby | Promise<Hobby>;
+    updateHobby(updateHobbyInput: UpdateHobbyInput): Hobby | Promise<Hobby>;
+    removeHobby(id: number): Nullable<Hobby> | Promise<Nullable<Hobby>>;
     createPost(createPostInput: CreatePostInput): Post | Promise<Post>;
     updatePost(updatePostInput: UpdatePostInput): Post | Promise<Post>;
     removePost(id: number): Nullable<Post> | Promise<Nullable<Post>>;
@@ -85,13 +97,16 @@ export interface Group {
     exampleField?: Nullable<number>;
 }
 
-export interface Post {
-    exampleField?: Nullable<number>;
-}
-
 export interface Hobby {
+    exampleField?: Nullable<number>;
     id: string;
     name: string;
+}
+
+export interface Post {
+    id: string;
+    content: string;
+    imageURL?: Nullable<string>;
 }
 
 export interface User {
@@ -108,6 +123,9 @@ export interface User {
     job?: Nullable<string>;
     descText?: Nullable<string>;
     descLink?: Nullable<string>;
+    followers?: Nullable<Nullable<User>[]>;
+    following?: Nullable<Nullable<User>[]>;
+    friends?: Nullable<Nullable<User>[]>;
     hobbies?: Nullable<Hobby[]>;
 }
 

@@ -1,6 +1,7 @@
 type Post {
-  # Example field (placeholder)
-  exampleField: Int
+  id: ID!
+  content: String!
+  imageURL: String
 }
 
 input CreatePostInput {

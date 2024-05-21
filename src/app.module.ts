@@ -11,6 +11,8 @@ import { GroupsModule } from './groups/groups.module';
 import { ApolloServerPluginLandingPageLocalDefault } from '@apollo/server/plugin/landingPage/default';
 import { Neo4jModule } from 'nest-neo4j';
 import { ConfigModule, ConfigService } from '@nestjs/config';
+import { AuthModule } from './auth/auth.module';
+import { HobbyModule } from './hobby/hobby.module';
 
 export type Neo4jScheme =
   | 'neo4j'
@@ -46,17 +48,20 @@ export interface Neo4jConfig {
       inject: [ConfigService],
       useFactory: (configService: ConfigService): Neo4jConfig => ({
         scheme: 'neo4j+s',
-        host: 'da53ed6c.databases.neo4j.io',
+        host: '47bf683d.databases.neo4j.io',
         port: '7687',
         username: 'neo4j',
-        password: 'YfmMlsJqsmS_DZlCDjFRm0tz4eyUaRy3LR8FoowPfUs',
+        password: 'VY1gKJWDr79Ql44_ktUGO9adQPlY1bk2Tv8dE9hi0uY',
         database: 'neo4j',
       }),
     }),
+
     UserModule,
     PostsModule,
     EventsModule,
     GroupsModule,
+    AuthModule,
+    HobbyModule,
   ],
   controllers: [AppController],
   providers: [AppService],
