@@ -1,24 +1,51 @@
+type Hobby {
+  id: ID!
+  name: String!
+}
+
 type User {
-  # Example field (placeholder)
-  exampleField: Int
+  _id: ID!
+  username: String!
+  firstName: String!
+  lastName: String!
+  email: String!
+  password: String!
+  avatar: String
+  banner: String
+  bio: String
+  location: String
+  job: String
+  descText: String
+  descLink: String
+  hobbies: [Hobby!]
 }
 
 input CreateUserInput {
-  # Example field (placeholder)
-  exampleField: Int
+  _id: ID!
+  username: String!
+  firstName: String!
+  lastName: String!
+  email: String!
+  password: String!
 }
 
 input UpdateUserInput {
-  id: Int!
+  username: String!
+  firstName: String!
+  lastName: String!
+  password: String!
+  avatar: String
+  banner: String
 }
 
 type Query {
   user: [User]!
-  users(id: Int!): User
+  users(id: ID!): User
 }
 
 type Mutation {
   createUser(createUserInput: CreateUserInput!): User!
   updateUser(updateUserInput: UpdateUserInput!): User!
-  removeUser(id: Int!): User
+  removeUser(id: ID!): User
+  addHobbyToUser(userId: ID!, hobbyId: ID!): User
 }

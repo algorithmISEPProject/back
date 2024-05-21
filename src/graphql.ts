@@ -33,11 +33,21 @@ export interface UpdatePostInput {
 }
 
 export interface CreateUserInput {
-    exampleField?: Nullable<number>;
+    _id: string;
+    username: string;
+    firstName: string;
+    lastName: string;
+    email: string;
+    password: string;
 }
 
 export interface UpdateUserInput {
-    id: number;
+    username: string;
+    firstName: string;
+    lastName: string;
+    password: string;
+    avatar?: Nullable<string>;
+    banner?: Nullable<string>;
 }
 
 export interface Event {
@@ -52,7 +62,7 @@ export interface IQuery {
     posts(): Nullable<Post>[] | Promise<Nullable<Post>[]>;
     post(id: number): Nullable<Post> | Promise<Nullable<Post>>;
     user(): Nullable<User>[] | Promise<Nullable<User>[]>;
-    users(id: number): Nullable<User> | Promise<Nullable<User>>;
+    users(id: string): Nullable<User> | Promise<Nullable<User>>;
 }
 
 export interface IMutation {
@@ -67,7 +77,8 @@ export interface IMutation {
     removePost(id: number): Nullable<Post> | Promise<Nullable<Post>>;
     createUser(createUserInput: CreateUserInput): User | Promise<User>;
     updateUser(updateUserInput: UpdateUserInput): User | Promise<User>;
-    removeUser(id: number): Nullable<User> | Promise<Nullable<User>>;
+    removeUser(id: string): Nullable<User> | Promise<Nullable<User>>;
+    addHobbyToUser(userId: string, hobbyId: string): Nullable<User> | Promise<Nullable<User>>;
 }
 
 export interface Group {
@@ -78,8 +89,26 @@ export interface Post {
     exampleField?: Nullable<number>;
 }
 
+export interface Hobby {
+    id: string;
+    name: string;
+}
+
 export interface User {
-    exampleField?: Nullable<number>;
+    _id: string;
+    username: string;
+    firstName: string;
+    lastName: string;
+    email: string;
+    password: string;
+    avatar?: Nullable<string>;
+    banner?: Nullable<string>;
+    bio?: Nullable<string>;
+    location?: Nullable<string>;
+    job?: Nullable<string>;
+    descText?: Nullable<string>;
+    descLink?: Nullable<string>;
+    hobbies?: Nullable<Hobby[]>;
 }
 
 type Nullable<T> = T | null;
