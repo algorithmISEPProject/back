@@ -15,8 +15,8 @@ type User {
   followers: [User]
   following: [User]
   friends: [User]
-  hobbies: [Hobby!]
-  posts: [Post!]
+  posts: [Post!]! @relationship(type: "POSTED", direction: OUT)
+  hobbies: [Hobby!]! @relationship(type: "HAS_HOBBY", direction: OUT)
   events: [Event!]
   groups: [Group!]
   createdAt: String!

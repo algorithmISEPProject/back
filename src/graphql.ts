@@ -99,8 +99,6 @@ export interface Group {
 
 export interface Hobby {
     exampleField?: Nullable<number>;
-    id: string;
-    name: string;
 }
 
 export interface Post {
@@ -127,6 +125,10 @@ export interface User {
     following?: Nullable<Nullable<User>[]>;
     friends?: Nullable<Nullable<User>[]>;
     hobbies?: Nullable<Hobby[]>;
+    posts?: Nullable<Post[]>;
+    events?: Nullable<Event[]>;
+    groups?: Nullable<Group[]>;
+    createdAt: string;
 }
 
 type Nullable<T> = T | null;
