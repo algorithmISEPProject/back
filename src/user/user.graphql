@@ -1,5 +1,5 @@
 type User {
-  _id: ID!
+  _id: Int!
   username: String!
   firstName: String!
   lastName: String!
@@ -15,15 +15,15 @@ type User {
   followers: [User]
   following: [User]
   friends: [User]
-  posts: [Post!]! @relationship(type: "POSTED", direction: OUT)
-  hobbies: [Hobby!]! @relationship(type: "HAS_HOBBY", direction: OUT)
+  posts: [Post!]!
+  hobbies: [Hobby!]!
   events: [Event!]
   groups: [Group!]
   createdAt: String!
 }
 
 input CreateUserInput {
-  _id: ID!
+  _id: Int!
   username: String!
   firstName: String!
   lastName: String!
@@ -42,12 +42,12 @@ input UpdateUserInput {
 
 type Query {
   user: [User]!
-  users(id: ID!): User
+  users(id: Int!): User
 }
 
 type Mutation {
   createUser(createUserInput: CreateUserInput!): User!
   updateUser(updateUserInput: UpdateUserInput!): User!
-  removeUser(id: ID!): User
-  addHobbyToUser(userId: ID!, hobbyId: ID!): User
+  removeUser(id: Int!): User
+  addHobbyToUser(userId: Int!, hobbyId: Int!): User
 }

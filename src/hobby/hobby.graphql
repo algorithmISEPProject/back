@@ -1,15 +1,14 @@
 type Hobby {
-  # Example field (placeholder)
-  exampleField: Int
+  id: Int!
+  name: String!
 }
 
 input CreateHobbyInput {
-  # Example field (placeholder)
-  exampleField: Int
+  name: String!
 }
 
 input UpdateHobbyInput {
-  id: Int!
+  name: String!
 }
 
 type Query {

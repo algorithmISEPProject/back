@@ -4,7 +4,7 @@ const { ApolloServer } = require('apollo-server');
 
 const userTypeDefs = `#graphql
     type User {
-        _id: ID!
+        _id: int!
         firstName: String!
         lastName: String!
         email: String!

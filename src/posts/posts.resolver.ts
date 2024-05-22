@@ -22,11 +22,6 @@ export class PostsResolver {
     return this.postsService.findOne(id);
   }
 
-  @Mutation('updatePost')
-  update(@Args('updatePostInput') updatePostInput: UpdatePostInput) {
-    return this.postsService.update(updatePostInput.id, updatePostInput);
-  }
-
   @Mutation('removePost')
   remove(@Args('id') id: number) {
     return this.postsService.remove(id);

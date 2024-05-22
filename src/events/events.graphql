@@ -1,15 +1,27 @@
 type Event {
-  # Example field (placeholder)
-  exampleField: Int
+  id: Int!
+  name: String!
+  description: String
+  location: String
+  date: String
+  time: String
+  attendees: [User]
 }
 
 input CreateEventInput {
-  # Example field (placeholder)
-  exampleField: Int
+  name: String!
+  description: String
+  location: String
+  date: String
+  time: String
 }
 
 input UpdateEventInput {
-  id: Int!
+  name: String
+  description: String
+  location: String
+  date: String
+  time: String
 }
 
 type Query {

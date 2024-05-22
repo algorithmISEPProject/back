@@ -1,16 +1,15 @@
 type Post {
-  id: ID!
-  content: String!
+  id: Int!
+  content: String
   imageURL: String
+  createdAt: String!
+  # likes: [User]
+  # comments: [Comment]
 }
 
 input CreatePostInput {
-  # Example field (placeholder)
-  exampleField: Int
-}
-
-input UpdatePostInput {
-  id: Int!
+  content: String
+  imageURL: String
 }
 
 type Query {
@@ -20,6 +19,5 @@ type Query {
 
 type Mutation {
   createPost(createPostInput: CreatePostInput!): Post!
-  updatePost(updatePostInput: UpdatePostInput!): Post!
   removePost(id: Int!): Post
 }

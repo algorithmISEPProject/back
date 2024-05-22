@@ -9,39 +9,46 @@
 /* eslint-disable */
 
 export interface CreateEventInput {
-    exampleField?: Nullable<number>;
+    name: string;
+    description?: Nullable<string>;
+    location?: Nullable<string>;
+    date?: Nullable<string>;
+    time?: Nullable<string>;
 }
 
 export interface UpdateEventInput {
-    id: number;
+    name?: Nullable<string>;
+    description?: Nullable<string>;
+    location?: Nullable<string>;
+    date?: Nullable<string>;
+    time?: Nullable<string>;
 }
 
 export interface CreateGroupInput {
-    exampleField?: Nullable<number>;
+    name: string;
+    description?: Nullable<string>;
 }
 
 export interface UpdateGroupInput {
-    id: number;
+    name?: Nullable<string>;
+    description?: Nullable<string>;
 }
 
 export interface CreateHobbyInput {
-    exampleField?: Nullable<number>;
+    name: string;
 }
 
 export interface UpdateHobbyInput {
-    id: number;
+    name: string;
 }
 
 export interface CreatePostInput {
-    exampleField?: Nullable<number>;
-}
-
-export interface UpdatePostInput {
-    id: number;
+    content?: Nullable<string>;
+    imageURL?: Nullable<string>;
 }
 
 export interface CreateUserInput {
-    _id: string;
+    _id: number;
     username: string;
     firstName: string;
     lastName: string;
@@ -59,7 +66,13 @@ export interface UpdateUserInput {
 }
 
 export interface Event {
-    exampleField?: Nullable<number>;
+    id: number;
+    name: string;
+    description?: Nullable<string>;
+    location?: Nullable<string>;
+    date?: Nullable<string>;
+    time?: Nullable<string>;
+    attendees?: Nullable<Nullable<User>[]>;
 }
 
 export interface IQuery {
@@ -71,7 +84,7 @@ export interface IQuery {
     posts(): Nullable<Post>[] | Promise<Nullable<Post>[]>;
     post(id: number): Nullable<Post> | Promise<Nullable<Post>>;
     user(): Nullable<User>[] | Promise<Nullable<User>[]>;
-    users(id: string): Nullable<User> | Promise<Nullable<User>>;
+    users(id: number): Nullable<User> | Promise<Nullable<User>>;
 }
 
 export interface IMutation {
@@ -85,30 +98,34 @@ export interface IMutation {
     updateHobby(updateHobbyInput: UpdateHobbyInput): Hobby | Promise<Hobby>;
     removeHobby(id: number): Nullable<Hobby> | Promise<Nullable<Hobby>>;
     createPost(createPostInput: CreatePostInput): Post | Promise<Post>;
-    updatePost(updatePostInput: UpdatePostInput): Post | Promise<Post>;
     removePost(id: number): Nullable<Post> | Promise<Nullable<Post>>;
     createUser(createUserInput: CreateUserInput): User | Promise<User>;
     updateUser(updateUserInput: UpdateUserInput): User | Promise<User>;
-    removeUser(id: string): Nullable<User> | Promise<Nullable<User>>;
-    addHobbyToUser(userId: string, hobbyId: string): Nullable<User> | Promise<Nullable<User>>;
+    removeUser(id: number): Nullable<User> | Promise<Nullable<User>>;
+    addHobbyToUser(userId: number, hobbyId: number): Nullable<User> | Promise<Nullable<User>>;
 }
 
 export interface Group {
-    exampleField?: Nullable<number>;
+    id: number;
+    name: string;
+    description?: Nullable<string>;
+    members?: Nullable<Nullable<User>[]>;
 }
 
 export interface Hobby {
-    exampleField?: Nullable<number>;
+    id: number;
+    name: string;
 }
 
 export interface Post {
-    id: string;
-    content: string;
+    id: number;
+    content?: Nullable<string>;
     imageURL?: Nullable<string>;
+    createdAt: string;
 }
 
 export interface User {
-    _id: string;
+    _id: number;
     username: string;
     firstName: string;
     lastName: string;
@@ -124,8 +141,8 @@ export interface User {
     followers?: Nullable<Nullable<User>[]>;
     following?: Nullable<Nullable<User>[]>;
     friends?: Nullable<Nullable<User>[]>;
-    hobbies?: Nullable<Hobby[]>;
-    posts?: Nullable<Post[]>;
+    posts: Post[];
+    hobbies: Hobby[];
     events?: Nullable<Event[]>;
     groups?: Nullable<Group[]>;
     createdAt: string;
