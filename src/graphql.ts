@@ -48,6 +48,7 @@ export interface CreatePostInput {
 }
 
 export interface CreateUserInput {
+    _id: number;
     username: string;
     firstName: string;
     lastName: string;

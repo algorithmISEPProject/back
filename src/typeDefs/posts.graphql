@@ -3,8 +3,6 @@ type Post {
   content: String
   imageURL: String
   createdAt: String!
-  # likes: [User]
-  # comments: [Comment]
 }
 
 input CreatePostInput {
